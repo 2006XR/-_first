@@ -1,0 +1,48 @@
+#include<iostream>
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+using namespace std; 
+int Random(int m, int n)
+{
+        int pos, dis;
+        if(m == n)
+        {
+            return m;
+        }
+        else if(m > n)
+        {
+            pos = n;
+            dis = m - n + 1;
+            return rand() % dis + pos;
+        }
+        else
+        {
+            pos = m;
+            dis = n - m + 1;
+            return rand() % dis + pos;
+        }
+}
+int main()
+{
+	int n,i=0,shu;
+	srand((int)time(NULL));
+    n=Random(0,100);
+	shu=0; 
+    while(shu!=n&&i<=6)
+    {
+    	cout<<"请输入一个数：";
+    	cin>>shu;
+    	if(shu>n)
+		  cout<<"太大了，调小点！"<<endl;
+		else if(shu<n)
+		  cout<<"太小了，调大点！"<<endl;
+		i++; 
+    }
+	if(shu==n)
+	  cout<<"对了！您还有"<<6-i<<"次机会。";
+	else
+	  cout<<"没机会了！正确答案是"<<n<<"哦。"; 
+    return 0;
+}
+
